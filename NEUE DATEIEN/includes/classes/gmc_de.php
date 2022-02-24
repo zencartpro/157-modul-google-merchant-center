@@ -8,78 +8,10 @@
  * @copyright Portions Copyright 2003-2022 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
  * @license https://www.zen-cart-pro.at/license/3_0.txt GNU General Public License V3.0
- * @version $Id: gmc_de.php 2022-02-24 08:19:54Z webchills $
+ * @version $Id: gmc_de.php 2022-02-24 15:57:54Z webchills $
  */
  
-  class google_mcde {
-    function additional_images($products_image) {
-      if ($products_image != '') {
-        $images_array = array();
-        // prepare image name
-        $products_image_extension = substr($products_image, strrpos($products_image, '.'));
-        $products_image_base = str_replace($products_image_extension, '', $products_image);        
-
-        // if in a subdirectory
-        if (strrpos($products_image, '/')) {
-          $products_image_match = substr($products_image, strrpos($products_image, '/')+1);
-          $products_image_match = str_replace($products_image_extension, '', $products_image_match) . '_';
-          $products_image_base = $products_image_match;
-        }   
-
-        $products_image_directory = str_replace($products_image, '', substr($products_image, strrpos($products_image, '/')));
-        if ($products_image_directory != '') {
-          $products_image_directory = DIR_WS_IMAGES . str_replace($products_image_directory, '', $products_image) . "/";
-        } else {
-          $products_image_directory = DIR_WS_IMAGES;
-        }
-
-        // Check for additional matching images
-        $file_extension = $products_image_extension;
-        $products_image_match_array = array();
-        if ($dir = @dir($products_image_directory)) {
-          while ($file = $dir->read()) {
-            if (!is_dir($products_image_directory . $file)) {
-                // -----
-                // Some additional-image-display plugins (like Fual Slimbox) have some additional checks to see
-                // if the file is "valid"; this notifier "accommodates" that processing, providing these parameters:
-                //
-                // $p1 ... (r/o) ... An array containing the variables identifying the current image.
-                // $p2 ... (r/w) ... A boolean indicator, set to true by any observer to note that the image is "acceptable".
-                //
-                $current_image_match = false;
-                $GLOBALS['zco_notifier']->notify(
-                    'NOTIFY_MODULES_ADDITIONAL_IMAGES_FILE_MATCH',
-                    array(
-                        'file' => $file,
-                        'file_extension' => $file_extension,
-                        'products_image' => $products_image,
-                        'products_image_base' => $products_image_base
-                    ),
-                    $current_image_match
-                );
-                if ($current_image_match || substr($file, strrpos($file, '.')) == $file_extension) {
-                    if ($current_image_match || preg_match('/' . preg_quote($products_image_base, '/') . '/i', $file) == 1) {
-                        if ($current_image_match || $file != $products_image) {
-                            if ($products_image_base . str_replace($products_image_base, '', $file) == $file) {
-                      $images_array[] = $this->google_mcde_image_url($file);
-                      
-                      if (count($images_array) >= 8) break;
-                    } else {
-                      //  no match
-                    }
-                  }
-                }
-              }
-            }
-          }
-          $dir->close();
-        }
-        return $images_array;
-      } else {
-        // default
-        return false;
-      }
-    }
+  class google_mcde {    
    
     // writes out the code into the feed file
     function google_mcde_fwrite($output='',$mode) {
@@ -333,7 +265,7 @@
     function google_mcde_xml_sanitizer($str, $cdata = false) {
       $str = $this->google_mcde_sanita($str);
       $length = strlen($str);
-      $out .= " ";
+      $out = '';
       for ($i = 0; $i < $length; $i++) {
         $current = ord($str[$i]);
         if ((($current == 0x9) || ($current == 0xA) || ($current == 0xD) || (($current >= 0x20) && ($current <= 0xD7FF)) || (($current >= 0xE000) && ($current <= 0xFFFD)) || (($current >= 0x10000) && ($current <= 0x10FFFF))) && ($current > 10) ) {
@@ -342,8 +274,7 @@
           $out .= " ";
         }
       }
-      $str = trim($str);
-     
+      $str = trim($str);     
       return $str;
     }
     
@@ -353,10 +284,10 @@
       if (defined('GOOGLE_MCDE_ALTERNATE_IMAGE_URL') && GOOGLE_MCDE_ALTERNATE_IMAGE_URL != '') {
         return GOOGLE_MCDE_ALTERNATE_IMAGE_URL . $products_image; 
       }
-      $products_image_extention = substr($products_image, strrpos($products_image, '.'));
+      $products_image_extension = substr($products_image, strrpos($products_image, '.'));
       $products_image_base = preg_replace('/'.$products_image_extension . '$/', '', $products_image);
-      $products_image_medium = $products_image_base . IMAGE_SUFFIX_MEDIUM . $products_image_extention;
-      $products_image_large = $products_image_base . IMAGE_SUFFIX_LARGE . $products_image_extention;
+      $products_image_medium = $products_image_base . IMAGE_SUFFIX_MEDIUM . $products_image_extension;
+      $products_image_large = $products_image_base . IMAGE_SUFFIX_LARGE . $products_image_extension;
 
       // check for a medium image else use small
       if (!file_exists(DIR_WS_IMAGES . 'medium/' . $products_image_medium)) {
@@ -491,7 +422,7 @@
     } else {
 // get sale price
 
-   $category = $product_to_categories->fields['categories_id'];
+   $category = $product_to_categories->fields['categories_id']??'';
 
       $product_to_categories = $db->Execute("select master_categories_id from " . TABLE_PRODUCTS . " where products_id = '" . $product_id . "'");
       $category = $product_to_categories->fields['master_categories_id'];
@@ -575,13 +506,13 @@
       $login_result = ftp_login($cd, $login, $password);
       if (!$login_result) {
         $out = $this->ftp_get_error_from_ob();
-  //      echo FTP_LOGIN_FAILED . FTP_USERNAME . ' ' . $login . FTP_PASSWORD . ' ' . $password . NL;
+  
         echo FTP_LOGIN_FAILED . NL;
         echo $out . NL;
         ftp_close($cd);
         return false;
       } else {
-  //    echo FTP_LOGIN_OK . FTP_USERNAME . ' ' . $login . FTP_PASSWORD . ' ' . $password . NL;
+  
         echo FTP_LOGIN_OK . NL;
         if ($ftp_dir != "") {
           if (!ftp_chdir($cd, $ftp_dir)) {

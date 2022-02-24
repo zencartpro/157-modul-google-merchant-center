@@ -8,7 +8,7 @@
  * @copyright Portions Copyright 2003-2022 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
  * @license https://www.zen-cart-pro.at/license/3_0.txt GNU General Public License V3.0
- * @version $Id: gmcde.php 2022-02-24 08:20:54Z webchills $
+ * @version $Id: gmcde.php 2022-02-24 15:47:54Z webchills $
  */
  /* configuration */
   ini_set('max_execution_time', 900); // change to whatever time you need
@@ -42,6 +42,9 @@
   $type = $google_mcde->get_type($type_parameter);
   $key = $_GET['key'];
   $upload_file ='';
+  $limit='';
+  $query_limit ='';
+  $offset ='';
   if ($key != GOOGLE_MCDE_KEY) exit('<p>Falscher Sicherheitskey!</p>');
   if (isset($_GET['upload_file'])) {
     $upload_file = DIR_FS_CATALOG . GOOGLE_MCDE_DIRECTORY . $_GET['upload_file'];
@@ -151,10 +154,7 @@
                                AND pd.language_id = " . (int)$languages->fields['languages_id'] ."
                              GROUP BY pd.products_name
                              ORDER BY p.products_id ASC" . $limit . $offset . ";";
-// debugging, comment out to disable
-//echo $products_query . '<br />';
-//print_r($products);
-//die();
+
           $products = $db->Execute($products_query);
           //die('record count: ' . $products->RecordCount());
           while (!$products->EOF) { // run until end of file or until maximum number of products reached
@@ -165,12 +165,8 @@
             if (GOOGLE_MCDE_DEBUG == 'true') {
               if (!$google_mcde->check_product($products->fields['products_id'])) echo $products->fields['products_id'] . ' skipped due to user restrictions<br />';
             }
-            if ($google_mcde->check_product($products->fields['products_id'])) {
-              if ($gb_map_enabled && $products->fields['map_enabled'] == '1') {
-                $price = $products->fields['map_price'];
-              } else {
-                $price = $google_mcde->google_get_products_actual_price($products->fields['products_id']);
-              }
+            if ($google_mcde->check_product($products->fields['products_id'])) {           
+                $price = $google_mcde->google_get_products_actual_price($products->fields['products_id']);              
               //BEGIN ZERO QUANTITY CHECK
               if (GOOGLE_MCDE_ZERO_QUANTITY == 'false') {
                 if ($products->fields['products_quantity'] > 0) {
@@ -275,16 +271,7 @@
                $content["id"] = '<g:id>' . $products->fields['products_id'] . '</g:id>';
                   
                 if ($products->fields['products_image'] != '') {
-                  $content["image_link"] = '<g:image_link>' . $google_mcde->google_mcde_image_url($products->fields['products_image']) . '</g:image_link>';
-                  $additional_images = $google_mcde->additional_images($products->fields['products_image']);
-                  if (is_array($additional_images) && sizeof($additional_images) > 0) {
-                    $count = 0;
-                    foreach ($additional_images as $additional_image) {
-                      $count++;
-                      $content["additional_image_link"] .= '<g:additional_image_link>' . $additional_image . '</g:additional_image_link>';
-                      if ($count == 9) break; // max 10 images including main image 
-                    }
-                  }
+                  $content["image_link"] = '<g:image_link>' . $google_mcde->google_mcde_image_url($products->fields['products_image']) . '</g:image_link>';                  
                 }
                 $content["link"] = '<link>' . $link . '</link>';
                 $content["price"] = '<g:price>' . number_format($price, 2, '.', '') . '</g:price>';
@@ -305,7 +292,7 @@
                 $content["brand"] = '<g:brand>' . $google_mcde->google_mcde_sanita($products->fields['manufacturers_name'], true) . '</g:brand>';
                 }
                 // identifier_exists as required from july 2013
-                if ($products->fields['products_ean'] == '' && $products->fields['manufacturers_name'] == '') {
+                if (GOOGLE_MCDE_EAN == 'true' && $products->fields['products_ean'] == '' && $products->fields['manufacturers_name'] == '') {
                 $content["identifier_exists"] = '<g:identifier_exists>FALSE</g:identifier_exists>';
                 }
                 // taxonomy
