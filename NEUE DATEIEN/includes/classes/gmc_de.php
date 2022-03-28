@@ -14,7 +14,7 @@
   class google_mcde {    
    
     // writes out the code into the feed file
-    function google_mcde_fwrite($output='',$mode) {
+    function google_mcde_fwrite($output='',$mode='') {
       global $outfile;
       $output = implode("\n", $output);
       if(strtolower(CHARSET) != 'utf-8') {
