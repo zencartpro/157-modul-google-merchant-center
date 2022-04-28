@@ -1,0 +1,6 @@
+Falls Sie in Ihrem Shop Artikel mit Grundpreisen haben und die Grundpreisfunktionalität des Google Merchant Centers nutzen wollen, dann verwenden Sie die Datei googlemcde.php in diesem Ordner.
+Sie enthält die nötigen Anpassungen, damit Grundpreiseinheit und Einheit des Normalpreises ins Datenfeed übernommen werden gemäß der Spezifikation auf
+https://support.google.com/merchants/answer/6324455?hl=de
+Laden Sie diese Datei in Ihr Shopverzeichnis hoch statt der normalen aus dem Ordner NEUE DATEIEN
+
+Voraussetzung ist, dass Sie das Grundpreismodul in mindestens Version 2.9.0 verwenden und bei Ihren Grundpreisartikeln auch das Feld Einheit des Normalpreises befüllt haben.
