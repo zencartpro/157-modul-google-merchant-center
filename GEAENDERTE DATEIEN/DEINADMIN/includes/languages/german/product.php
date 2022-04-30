@@ -1,6 +1,5 @@
 <?php
-/**
- 
+/** 
  * Zen Cart German Specific
  * @copyright Copyright 2003-2022 Zen Cart Development Team
  * Zen Cart German Version - www.zen-cart-pro.at
@@ -8,7 +7,6 @@
  * @license https://www.zen-cart-pro.at/license/3_0.txt GNU General Public License V3.0
  * @version $Id: product.php for GMCDE 2022-02-23 19:58:04Z webchills $
  */
-
 
 define('TEXT_PRODUCTS_STATUS', 'Artikelstatus:');
 define('TEXT_PRODUCTS_VIRTUAL', 'Virtueller Artikel:');
@@ -74,7 +72,6 @@ define('TEXT_PRODUCT_DATE_ADDED', 'Dieser Artikel wurde am %s hinzugefügt.');
 define('TEXT_PRODUCT_DATE_AVAILABLE', 'Artikel wird ab %s wieder angeboten.');
 
 
-
 // meta tags
 define('TEXT_META_TAG_TITLE_INCLUDES', '<strong>Wählen Sie aus, welche Informationen die Metatags des Artikels enthalten sollen:</strong>');
 define('TEXT_PRODUCTS_METATAGS_PRODUCTS_NAME_STATUS', '<strong>Artikelname:</strong>');
@@ -98,4 +95,4 @@ define('TEXT_PRODUCTS_ISBN', 'ISBN (13stellig oder 10stellig):');
 define('TEXT_PRODUCTS_CONDITION', 'Zustand:');
 define('TEXT_PRODUCTS_AVAILABILITY', 'Verfügbarkeit:');
 define('TEXT_PRODUCTS_BRAND', 'Marke (nur falls anders als Hersteller):');
-
+define('TEXT_PRODUCTS_AVAILABILITY_DATE', 'Verfügbarkeitsdatum:<br>Nur ausfüllen, wenn Verfügbarkeit vorbestellt oder nachbestellt!!!');

@@ -1,5 +1,4 @@
 <?php
-
 /**
  * Zen Cart German Specific
 
@@ -7,7 +6,7 @@
  * Zen Cart German Version - www.zen-cart-pro.at
  * @copyright Portions Copyright 2003 osCommerce
  * @license https://www.zen-cart-pro.at/license/3_0.txt GNU General Public License V3.0
-  * @version $Id: update_product.php for GMCDE 2022-02-23 19:49:41Z webchills $
+  * @version $Id: update_product.php for GMCDE 2022-04-30 15:49:41Z webchills $
  */
 if (!defined('IS_ADMIN_FLAG')) {
   die('Illegal Access');
@@ -28,6 +27,17 @@ if (isset($_POST['edit']) && $_POST['edit'] == 'edit') {
     }
   }
   $products_date_available = (date('Y-m-d') < $products_date_available) ? $products_date_available : 'null';
+  
+  $products_availability_date = zen_db_prepare_input($_POST['products_availability_date']);
+  if (DATE_FORMAT_DATE_PICKER != 'yy-mm-dd' && !empty($products_availability_date)) {
+    $local_fmt = zen_datepicker_format_fordate(); 
+    $dt = DateTime::createFromFormat($local_fmt, $products_availability_date);
+    $products_availability_date = 'null';
+    if (!empty($dt)) {
+      $products_availability_date = $dt->format('Y-m-d'); 
+    }
+  }
+  $products_availability_date = (date('Y-m-d') < $products_availability_date) ? $products_availability_date : 'null';
 
   // Data-cleaning to prevent data-type mismatch errors:
   $sql_data_array = array(
@@ -37,7 +47,8 @@ if (isset($_POST['edit']) && $_POST['edit'] == 'edit') {
                             'products_ean' => zen_db_prepare_input($_POST['products_ean']),
                             'products_isbn' => zen_db_prepare_input($_POST['products_isbn']),
                             'products_condition' => zen_db_prepare_input($_POST['products_condition']),
-			    'products_availability' => zen_db_prepare_input($_POST['products_availability']),
+			                      'products_availability' => zen_db_prepare_input($_POST['products_availability']),
+			                      'products_availability_date' => $products_availability_date,
                             'products_brand' => zen_db_prepare_input($_POST['products_brand']),
                             'products_taxonomy' => zen_db_prepare_input($_POST['products_taxonomy']),
                             'products_price' => convertToFloat($_POST['products_price']),

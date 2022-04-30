@@ -1,12 +1,11 @@
 <?php
 /**
- * Zen Cart German Specific
- 
+ * Zen Cart German Specific 
  * @copyright Copyright 2003-2022 Zen Cart Development Team
  * Zen Cart German Version - www.zen-cart-pro.at
  * @copyright Portions Copyright 2003 osCommerce
  * @license https://www.zen-cart-pro.at/license/3_0.txt GNU General Public License V3.0
- * @version $Id: copy_product_confirm.php for GMCDE 2022-03-28 14:26:16Z webchills $
+ * @version $Id: copy_product_confirm.php for GMCDE 2022-04-30 15:26:16Z webchills $
  */
 if (!defined('IS_ADMIN_FLAG')) {
   die('Illegal Access');
@@ -61,6 +60,8 @@ if (isset($_POST['products_id'], $_POST['categories_id'])) {
           'products_last_modified',
           'products_date_added',
           'products_date_available',
+          'products_availability_date',
+          
         );
         $casted_fields = array(
           'products_quantity' =>  'float',
@@ -71,7 +72,7 @@ if (isset($_POST['products_id'], $_POST['categories_id'])) {
 	  'products_ean' =>  'int',
 	  'products_isbn' =>  'int',
 	  'products_conditions' =>  'int',
-	  'products_availability' =>  'int',
+	  'products_availability',	  
           'products_brand',
           'products_taxonomy',
           'product_is_free' =>  'int',
@@ -104,7 +105,7 @@ if (isset($_POST['products_id'], $_POST['categories_id'])) {
         $sql_data_array['products_status'] = 0;
         $sql_data_array['products_date_added'] = 'now()';
         $sql_data_array['products_date_available'] = (!empty($product->fields['products_date_available']) ? zen_db_input($product->fields['products_date_available']) : 'null');
-
+        $sql_data_array['products_availability_date'] = (!empty($product->fields['products_availability_date']) ? zen_db_input($product->fields['products_availability_date']) : 'null');
         $sql_data_array['master_categories_id'] = $categories_id;
 
         // Everything is set, stick it in the database

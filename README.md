@@ -13,6 +13,7 @@ Die Erstellung des Feeds erfolgt entweder manuell in der Zen Cart Administration
 
 Bereits seit September 2011 müssen Artikelfeeds neue Pflichtfelder enthalten, sonst werden die Artikel bei Google Shopping nicht mehr gelistet.
 Daher ist es notwendig, bei den Artikeln die Felder EAN, ISBN, Marke, Verfügbarkeit und Google Produktkategorie vorzusehen, damit diese - falls befüllt - in das Artikelfeed übernommen werden können.
+Ab Ende Juni 2022 ist es nötig bei Verfügbarkeit preorder oder backorder ein Verfügbarkeitsdatum zu übermitteln.
 
 Dieses Modul enthält folgende Zusatzfelder, die in der Zen Cart Administration beim Artikel anlegen/bearbeiten neu verfügbar sind:
 - EAN
@@ -20,4 +21,5 @@ Dieses Modul enthält folgende Zusatzfelder, die in der Zen Cart Administration 
 - Marke (Brand)
 - Zustand (new, used, refurbished)
 - Verfügbarkeit (availability)
+- Verfügbarkeitsdatum (availability_date)
 - Google Produktkategorie 

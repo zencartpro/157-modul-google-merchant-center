@@ -1,13 +1,11 @@
-<?php
- 
-/**
- 
+<?php 
+/** 
  * Zen Cart German Specific
  * @copyright Copyright 2003-2022 Zen Cart Development Team
  * Zen Cart German Version - www.zen-cart-pro.at
  * @copyright Portions Copyright 2003 osCommerce
  * @license https://www.zen-cart-pro.at/license/3_0.txt GNU General Public License V3.0
- * @version $Id: product.php for GMCDE 2022-02-23 19:59:16Z webchills $
+ * @version $Id: product.php for GMCDE 2022-04-30 16:59:16Z webchills $
  */
 
 
@@ -98,4 +96,4 @@ define('TEXT_PRODUCTS_CONDITION', 'Condition:');
 define('TEXT_PRODUCTS_AVAILABILITY', 'Availability:');
 define('TEXT_PRODUCTS_BRAND', 'Brand:');
 define('TEXT_PRODUCTS_TAXONOMY', 'Google Product Category:');
-
+define('TEXT_PRODUCTS_AVAILABILITY_DATE', 'Availability Date:<br>Only if availability is preorder or backorder!!!');

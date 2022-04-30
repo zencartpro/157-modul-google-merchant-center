@@ -2,13 +2,13 @@
 /**
  * googlemcde.php
  *
- * @package google merchant center deutschland 3.7.1 for Zen-Cart 1.5.7 german
+ * @package google merchant center deutschland 3.8.0 for Zen-Cart 1.5.7 german
  * @copyright Copyright 2007 Numinix Technology http://www.numinix.com
  * @copyright Portions Copyright 2011-2022 webchills http://www.webchills.at
  * @copyright Portions Copyright 2003-2022 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
  * @license https://www.zen-cart-pro.at/license/3_0.txt GNU General Public License V3.0
- * @version $Id: gmcde.php mit Grundpreis 2022-04-28 17:24:54Z webchills $
+ * @version $Id: gmcde.php mit Grundpreis 2022-04-30 17:34:54Z webchills $
  */
  /* configuration */
   ini_set('max_execution_time', 900); // change to whatever time you need
@@ -132,6 +132,9 @@
         $additional_attributes .= ", p.products_availability";
 		// google product taxonomy
         $additional_attributes .= ", p.products_taxonomy";
+	// availability_date
+        $additional_attributes .= ", p.products_availability_date";
+
     // grundpreis
       $additional_attributes .= ", p.products_base_unit";
       $additional_attributes .= ", p.products_unit_pricing_measure";
@@ -154,7 +157,7 @@
                                AND p.product_is_call <> 1
                                AND p.product_is_free <> 1
                                AND pd.language_id = " . (int)$languages->fields['languages_id'] ."
-                             GROUP BY pd.products_name
+                             
                              ORDER BY p.products_id ASC" . $limit . $offset . ";";
 
           $products = $db->Execute($products_query);
@@ -245,6 +248,15 @@
                   $content["condition"] = '<g:condition>' . $products->fields['products_condition'] . '</g:condition>';
                   
                    $content["availability"] = '<g:availability>' . $products->fields['products_availability'] . '</g:availability>';
+
+                   if ($products->fields['products_availability'] == 'preorder') {
+                   $content["availability_date"] = '<g:availability_date>' . $google_mcde->google_mcde_availability_date($products->fields['products_availability_date']) . '</g:availability_date>';
+                }
+                
+                if ($products->fields['products_availability'] == 'backorder') {
+                   $content["availability_date"] = '<g:availability_date>' . $google_mcde->google_mcde_availability_date($products->fields['products_availability_date']) . '</g:availability_date>';
+                }
+		
                if ($products->fields['products_base_unit'] != '') {
                   $content["unit_pricing_base_measure"] = '<g:unit_pricing_base_measure>' . $google_mcde->google_mcde_xml_sanitizer($products->fields['products_base_unit'], true) . '</g:unit_pricing_base_measure>';
                 }

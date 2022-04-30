@@ -1,12 +1,11 @@
 <?php
 /**
- * Zen Cart German Specific
- 
+ * Zen Cart German Specific 
  * @copyright Copyright 2003-2022 Zen Cart Development Team
  * Zen Cart German Version - www.zen-cart-pro.at
  * @copyright Portions Copyright 2003 osCommerce
  * @license https://www.zen-cart-pro.at/license/3_0.txt GNU General Public License V3.0
- * @version $Id: collect_info.php for GMCDE 2022-02-23 19:54:41Z webchills $
+ * @version $Id: collect_info.php for GMCDE 2022-04-30 16:54:41Z webchills $
  */
 if (!defined('IS_ADMIN_FLAG')) {
   die('Illegal Access');
@@ -56,7 +55,8 @@ $parameters = [
     if (isset($_GET['pID']) && empty($_POST)) {
       $product = $db->Execute("select pd.products_name, pd.products_merkmale, pd.products_description, pd.products_url,
                                   p.*, 
-                                  date_format(p.products_date_available, '" .  zen_datepicker_format_forsql() . "') as products_date_available
+                                  date_format(p.products_date_available, '" .  zen_datepicker_format_forsql() . "') as products_date_available,
+                                  date_format(p.products_availability_date, '" .  zen_datepicker_format_forsql() . "') as products_availability_date                                 
                            FROM " . TABLE_PRODUCTS . " p,
                                 " . TABLE_PRODUCTS_DESCRIPTION . " pd
                            WHERE p.products_id = " . (int)$_GET['pID'] . "
@@ -433,7 +433,21 @@ if (zen_get_categories_status($current_category_id) == 0 && $pInfo->products_sta
     	<label class="radio-inline"><?php echo zen_draw_radio_field('products_availability', 'in stock', ($is_products_availability=='in stock')) . 'auf Lager' ; ?></label>
       <label class="radio-inline"><?php echo zen_draw_radio_field('products_availability', 'out of stock', ($is_products_availability=='out of stock')) . 'nicht auf Lager' ; ?></label>
       <label class="radio-inline"><?php echo zen_draw_radio_field('products_availability', 'preorder', ($is_products_availability=='preorder')) . 'vorbestellt' ; ?></label>
+      <label class="radio-inline"><?php echo zen_draw_radio_field('products_availability', 'backorder', ($is_products_availability=='backorder')) . 'nachbestellt' ; ?></label>
    </div>
+  </div>
+  
+  <div class="form-group">
+      <?php echo zen_draw_label(TEXT_PRODUCTS_AVAILABILITY_DATE, 'products_availability_date', 'class="col-sm-3 control-label"'); ?>
+    <div class="col-sm-9 col-md-6">
+      <div class="date input-group" id="datepicker">
+        <span class="input-group-addon datepicker_icon">
+          <i class="fa fa-calendar fa-lg">&nbsp;</i>
+        </span>
+        <?php echo zen_draw_input_field('products_availability_date', $pInfo->products_availability_date, 'class="form-control" id="products_availability_date" autocomplete="off"'); ?>
+      </div>
+        <span class="help-block errorText">(<?php echo zen_datepicker_format_full();?>)</span>
+    </div>
   </div>
   
    <div class="form-group">

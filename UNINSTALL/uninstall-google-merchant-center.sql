@@ -1,5 +1,5 @@
 ##################################################################################
-# UNINSTALL Google Merchant Center Deutschland 3.7.0 - 2022-02-24 - webchills
+# UNINSTALL Google Merchant Center Deutschland 3.8.0 - 2022-04-30 - webchills
 # UNINSTALL - NUR AUSFÜHREN WENN SIE DAS MODUL KOMPLETT ENTFERNEN WOLLEN!
 ##################################################################################
 

@@ -2,13 +2,13 @@
 /**
  * gmc_de.php
  *
- * @package google merchant center deutschland 3.7.0 for Zen-Cart 1.5.7 german
+ * @package google merchant center deutschland 3.8.0 for Zen-Cart 1.5.7 german
  * @copyright Copyright 2007 Numinix Technology http://www.numinix.com
  * @copyright Portions Copyright 2011-2022 webchills https://www.webchills.at
  * @copyright Portions Copyright 2003-2022 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
  * @license https://www.zen-cart-pro.at/license/3_0.txt GNU General Public License V3.0
- * @version $Id: gmc_de.php 2022-02-24 15:57:54Z webchills $
+ * @version $Id: gmc_de.php 2022-04-30 17:21:54Z webchills $
  */
  
   class google_mcde {    
@@ -320,8 +320,15 @@
         $expiration_date = time();
       else
         $expiration_date = strtotime($base_date);
-      $expiration_date += GOOGLE_MCDE_EXPIRATION_DAYS*24*60*60;
-      $retval = (date('Y-m-d', $expiration_date));
+      $expiration_date += GOOGLE_MCDE_EXPIRATION_DAYS*24*60*60;      
+      $retval = (date('Y-m-d\TH:i:sO', $expiration_date));
+      return $retval;
+    }
+    
+    
+    function google_mcde_availability_date($base_date) {
+      $availability_date = strtotime($base_date);
+      $retval = (date('Y-m-d\TH:i:sO', $availability_date));
       return $retval;
     }
   
