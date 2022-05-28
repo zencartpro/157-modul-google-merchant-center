@@ -43,23 +43,22 @@ Es ist nur geeignet für das Zielland Deutschland oder Österreich! <br>
 Das generierte Artikelfeed     kann via Zen Cart Administration per FTP an Google übermittelt   werden. <br>
 Alternativ kann man im Google Merchant Center Dashboard auch   einfach den Link zum Feed angeben und es per Zeitplan automatisiert von   Google abholen lassen.<br>
 Die Erstellung des Feeds erfolgt entweder manuell in der Zen Cart Administration oder automatisiert per Cronjob.<br>
-<br> 
+<br>
 Bereits seit September 2011 müssen Artikelfeeds neue Pflichtfelder enthalten, sonst werden die Artikel bei Google Shopping nicht mehr gelistet.<br>
-  Daher ist es notwendig, bei den Artikeln die Felder EAN, ISBN, Marke, Verfügbarkeit und Google Produktkategorie vorzusehen, damit diese - falls befüllt - in das Artikelfeed   übernommen werden können.<br>
-    <br>
-    Dieses Modul enthält folgende Zusatzfelder, die in der Zen Cart Administration beim Artikel anlegen/bearbeiten  neu verfügbar sind:<br>
+Daher ist es notwendig, bei den Artikeln die Felder EAN, ISBN, Marke, Verfügbarkeit und Google Produktkategorie vorzusehen, damit diese - falls befüllt - in das Artikelfeed übernommen werden können.<br>
+Seit Juli 2013 muss das Feld identifier_exists mit FALSE übergeben werden, falls der Artikel keine eindeutige Artikelnummer/EAN oder Hersteller hat.<br>
+Ab Ende Juni 2022 ist es nötig bei Verfügbarkeit preorder oder backorder ein Verfügbarkeitsdatum zu übermitteln.</p>
+  <p>Dieses Modul enthält folgende Zusatzfelder, die in der Zen Cart Administration beim Artikel anlegen/bearbeiten neu verfügbar sind:<br>
     - EAN<br>
     - ISBN<br>
     - Marke (Brand)<br>
     - Zustand (new, used, refurbished)<br>
-    - Verfügbarkeit (availability)<br>
-    - Google Produktkategorie  <br>
-  <br>
-  Seit Juli 2013 muss das Feld identifier_exists mit FALSE übergeben werden, falls der Artikel keine eindeutige Artikelnummer/EAN oder Hersteller hat.<br>
-  Dies wird nun berücksichtigt. Die Werte "in stock" und "available for order" wurden von Google im Sommer 2014 zusammengeführt, daher kann unter availability nun generell "in stock" verwendet werden, wenn der Artikel in absehbarer Zeit verschickt werden kann. Der Wert "available for order" wurde daher entfernt.
-  <br>
-  Ab Ende Juni 2022 ist es nötig bei Verfügbarkeit preorder oder backorder ein Verfügbarkeitsdatum zu übermitteln.  <br>
-</p>
+    - Verfügbarkeit (in stock, out of stock, preorder, backorder)<br>
+    - Verfügbarkeitsdatum (availability_date)<br>
+    - Google Produktkategorie <br>
+    <br>
+    Sollte im Shop auch das Modul Grundpreisanzeige in mindestens Version 2.9.0 verwendet werden, werden auch die Grundpreisangaben ins Feed übernommen.<br>
+  </p>
 <h3>Copyright,  Lizenz, Changelog</h3>
 <p>Copyright dieser deutschen Anpassung/Anleitung für Zen Cart 1.5.7 deutsch<br>
 (c) 2016-2022 webchills (<a href="http://www.webchills.at" target="_blank">www.webchills.at</a>) <br>
@@ -72,12 +71,10 @@ deutsche Übersetzung/Anpassung des Moduls Google Merchant Center von Numinix<br
 2022-05-28<br>
 * Erweiterung von availability mit backorder<br>
 * Unterstützung von availability_date für backorder und preorder<br>
-* verbesserte iso 8601 Datenformatierung
-<br>
+* verbesserte iso 8601 Datenformatierung<br>
+* optionale Unterstützung der Grundpreisfunktionalität<br>
+* Anleitung aktualisiert
   <br>
-  Version 3.7.1<br>
-2022-04-28 <br>
-* Optionale Unterstützung der Grundpreisfunktionalität <br>
   <br>
   Version 3.7.0<br>
   2022-02-24 <br>
