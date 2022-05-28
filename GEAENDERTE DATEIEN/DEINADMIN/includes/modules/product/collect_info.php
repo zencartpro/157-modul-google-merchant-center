@@ -5,7 +5,7 @@
  * Zen Cart German Version - www.zen-cart-pro.at
  * @copyright Portions Copyright 2003 osCommerce
  * @license https://www.zen-cart-pro.at/license/3_0.txt GNU General Public License V3.0
- * @version $Id: collect_info.php for GMCDE 2022-04-30 16:54:41Z webchills $
+ * @version $Id: collect_info.php for GMCDE 2022-05-28 16:59:41Z webchills $
  */
 if (!defined('IS_ADMIN_FLAG')) {
   die('Illegal Access');
@@ -397,10 +397,10 @@ if (zen_get_categories_status($current_category_id) == 0 && $pInfo->products_sta
         <?php echo zen_draw_input_field('products_model', htmlspecialchars(stripslashes($pInfo->products_model), ENT_COMPAT, CHARSET, TRUE), zen_set_field_length(TABLE_PRODUCTS, 'products_model') . ' class="form-control" id="products_model"'); ?>
     </div>
   </div>
-  <div class="form-group">
-     <?php echo TEXT_ADDITIONAL_FIELDS_MERCHANT_CENTER; ?>
-    <div class="col-sm-9 col-md-6">
-       
+  
+    <div class="form-group">
+    <div class="col-sm-offset-3 col-sm-9 col-md-6">
+        <?php echo TEXT_ADDITIONAL_FIELDS_MERCHANT_CENTER; ?>
     </div>
   </div>
   

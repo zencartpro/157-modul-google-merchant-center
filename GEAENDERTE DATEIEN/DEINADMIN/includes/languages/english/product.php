@@ -5,7 +5,7 @@
  * Zen Cart German Version - www.zen-cart-pro.at
  * @copyright Portions Copyright 2003 osCommerce
  * @license https://www.zen-cart-pro.at/license/3_0.txt GNU General Public License V3.0
- * @version $Id: product.php for GMCDE 2022-04-30 16:59:16Z webchills $
+ * @version $Id: product.php for GMCDE 2022-05-28 16:59:16Z webchills $
  */
 
 
@@ -89,11 +89,11 @@ define('TEXT_TITLE_PLUS_TAGLINE', 'Store Title+Tagline'); // this refers to what
 
 define('TEXT_PRODUCTS_PRICE_INFO', 'Price:');
 
-define('TEXT_ADDITIONAL_FIELDS_MERCHANT_CENTER', 'Additional fields for Google Merchant Center');
+define('TEXT_ADDITIONAL_FIELDS_MERCHANT_CENTER', 'Additional fields for Google Merchant Center - Fill availability date only if availability is preorder or backorder!');
 define('TEXT_PRODUCTS_EAN', 'EAN:');
 define('TEXT_PRODUCTS_ISBN', 'ISBN:');
 define('TEXT_PRODUCTS_CONDITION', 'Condition:');
 define('TEXT_PRODUCTS_AVAILABILITY', 'Availability:');
 define('TEXT_PRODUCTS_BRAND', 'Brand:');
 define('TEXT_PRODUCTS_TAXONOMY', 'Google Product Category:');
-define('TEXT_PRODUCTS_AVAILABILITY_DATE', 'Availability Date:<br>Only if availability is preorder or backorder!!!');
+define('TEXT_PRODUCTS_AVAILABILITY_DATE', 'Availability Date:');

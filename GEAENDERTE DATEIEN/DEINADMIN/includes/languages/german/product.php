@@ -5,7 +5,7 @@
  * Zen Cart German Version - www.zen-cart-pro.at
  * @copyright Portions Copyright 2003 osCommerce
  * @license https://www.zen-cart-pro.at/license/3_0.txt GNU General Public License V3.0
- * @version $Id: product.php for GMCDE 2022-02-23 19:58:04Z webchills $
+ * @version $Id: product.php for GMCDE 2022-05-28 17:01:04Z webchills $
  */
 
 define('TEXT_PRODUCTS_STATUS', 'Artikelstatus:');
@@ -87,7 +87,7 @@ define('TEXT_TITLE_PLUS_TAGLINE', 'Store Title+Tagline'); // this refers to what
 
 define('TEXT_PRODUCTS_PRICE_INFO', 'Preis:');
 
-define('TEXT_ADDITIONAL_FIELDS_MERCHANT_CENTER', 'Zusatzfelder für Google Merchant Center');
+define('TEXT_ADDITIONAL_FIELDS_MERCHANT_CENTER', 'Zusatzfelder für Google Merchant Center - Verfügbarkeitsdatum nur ausfüllen, wenn Verfügbarkeit vorbestellt oder nachbestellt!');
 define('TEXT_ADDITIONAL_FIELDS_MERCHANT_CENTER_INFO', 'Nur ausfüllen, wenn Sie das Google Merchant Center Modul nutzen');
 define('TEXT_PRODUCTS_TAXONOMY', 'Google Produktkategorie:');
 define('TEXT_PRODUCTS_EAN', 'EAN (13stellig):');
@@ -95,4 +95,4 @@ define('TEXT_PRODUCTS_ISBN', 'ISBN (13stellig oder 10stellig):');
 define('TEXT_PRODUCTS_CONDITION', 'Zustand:');
 define('TEXT_PRODUCTS_AVAILABILITY', 'Verfügbarkeit:');
 define('TEXT_PRODUCTS_BRAND', 'Marke (nur falls anders als Hersteller):');
-define('TEXT_PRODUCTS_AVAILABILITY_DATE', 'Verfügbarkeitsdatum:<br>Nur ausfüllen, wenn Verfügbarkeit vorbestellt oder nachbestellt!!!');
+define('TEXT_PRODUCTS_AVAILABILITY_DATE', 'Verfügbarkeitsdatum:');

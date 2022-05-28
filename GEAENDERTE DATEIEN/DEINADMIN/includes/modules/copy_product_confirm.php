@@ -5,7 +5,7 @@
  * Zen Cart German Version - www.zen-cart-pro.at
  * @copyright Portions Copyright 2003 osCommerce
  * @license https://www.zen-cart-pro.at/license/3_0.txt GNU General Public License V3.0
- * @version $Id: copy_product_confirm.php for GMCDE 2022-04-30 15:26:16Z webchills $
+ * @version $Id: copy_product_confirm.php for GMCDE 2022-05-28 16:48:16Z webchills $
  */
 if (!defined('IS_ADMIN_FLAG')) {
   die('Illegal Access');
@@ -69,10 +69,10 @@ if (isset($_POST['products_id'], $_POST['categories_id'])) {
           'products_weight' =>  'float',
           'products_tax_class_id' =>  'int',
           'manufacturers_id' =>  'int',
-	  'products_ean' =>  'int',
-	  'products_isbn' =>  'int',
-	  'products_conditions' =>  'int',
-	  'products_availability',	  
+	        'products_ean',
+	        'products_isbn',
+	        'products_conditions' =>  'int',
+	        'products_availability',	  
           'products_brand',
           'products_taxonomy',
           'product_is_free' =>  'int',

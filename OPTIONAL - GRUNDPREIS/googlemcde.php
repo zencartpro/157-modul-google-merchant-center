@@ -257,11 +257,11 @@
                    $content["availability_date"] = '<g:availability_date>' . $google_mcde->google_mcde_availability_date($products->fields['products_availability_date']) . '</g:availability_date>';
                 }
 		
-               if ($products->fields['products_base_unit'] != '') {
+               if (!empty ($products->fields['products_base_unit']) && $products->fields['products_base_unit'] != '') {
                   $content["unit_pricing_base_measure"] = '<g:unit_pricing_base_measure>' . $google_mcde->google_mcde_xml_sanitizer($products->fields['products_base_unit'], true) . '</g:unit_pricing_base_measure>';
                 }
                 
-                if ($products->fields['products_unit_pricing_measure'] != '') {
+                if (!empty ($products->fields['products_unit_pricing_measure']) && $products->fields['products_unit_pricing_measure'] != '') {
                   $content["unit_pricing_measure"] = '<g:unit_pricing_measure>' . $google_mcde->google_mcde_xml_sanitizer($products->fields['products_unit_pricing_measure'], true) . '</g:unit_pricing_measure>';
                 }
                 
