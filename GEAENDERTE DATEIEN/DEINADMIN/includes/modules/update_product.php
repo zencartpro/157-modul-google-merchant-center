@@ -1,12 +1,13 @@
 <?php
-/**
- * Zen Cart German Specific
 
- * @copyright Copyright 2003-2022 Zen Cart Development Team
+/**
+ * Zen Cart German Specific (158 code in 157 / zencartpro adaptations))
+
+ * @copyright Copyright 2003-2023 Zen Cart Development Team
  * Zen Cart German Version - www.zen-cart-pro.at
  * @copyright Portions Copyright 2003 osCommerce
  * @license https://www.zen-cart-pro.at/license/3_0.txt GNU General Public License V3.0
-  * @version $Id: update_product.php for GMCDE 2022-04-30 15:49:41Z webchills $
+  * @version $Id: update_product.php for GMCDE 2023-11-03 13:49:41Z webchills $
  */
 if (!defined('IS_ADMIN_FLAG')) {
   die('Illegal Access');
@@ -38,21 +39,25 @@ if (isset($_POST['edit']) && $_POST['edit'] == 'edit') {
     }
   }
   $products_availability_date = (date('Y-m-d') < $products_availability_date) ? $products_availability_date : 'null';
+ 
+  if (!empty($products_id)) { 
+    $zco_notifier->notify('NOTIFY_MODULES_UPDATE_PRODUCT_START', ['action' => $action, 'products_id' => $products_id]);
+  }
 
   // Data-cleaning to prevent data-type mismatch errors:
   $sql_data_array = array(
     'products_quantity' => convertToFloat($_POST['products_quantity']),
     'products_type' => (int)$_POST['product_type'],
-                            'products_model' => zen_db_prepare_input($_POST['products_model']),
-                            'products_ean' => zen_db_prepare_input($_POST['products_ean']),
-                            'products_isbn' => zen_db_prepare_input($_POST['products_isbn']),
-                            'products_condition' => zen_db_prepare_input($_POST['products_condition']),
-			                      'products_availability' => zen_db_prepare_input($_POST['products_availability']),
-			                      'products_availability_date' => $products_availability_date,
-                            'products_brand' => zen_db_prepare_input($_POST['products_brand']),
-                            'products_taxonomy' => zen_db_prepare_input($_POST['products_taxonomy']),
-                            'products_price' => convertToFloat($_POST['products_price']),
-                            'products_date_available' => $products_date_available,
+    'products_model' => zen_db_prepare_input($_POST['products_model']),
+    'products_ean' => zen_db_prepare_input($_POST['products_ean']),
+    'products_isbn' => zen_db_prepare_input($_POST['products_isbn']),
+    'products_condition' => zen_db_prepare_input($_POST['products_condition']),
+    'products_availability' => zen_db_prepare_input($_POST['products_availability']),
+    'products_availability_date' => $products_availability_date,
+    'products_brand' => zen_db_prepare_input($_POST['products_brand']),
+    'products_taxonomy' => zen_db_prepare_input($_POST['products_taxonomy']),
+    'products_price' => convertToFloat($_POST['products_price']),
+    'products_date_available' => $products_date_available,
     'products_weight' => convertToFloat($_POST['products_weight']),
     'products_status' => (int)$_POST['products_status'],
     'products_virtual' => (int)$_POST['products_virtual'],

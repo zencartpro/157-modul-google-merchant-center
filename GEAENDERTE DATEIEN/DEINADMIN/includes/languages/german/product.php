@@ -1,11 +1,11 @@
 <?php
 /** 
- * Zen Cart German Specific
- * @copyright Copyright 2003-2022 Zen Cart Development Team
+ * Zen Cart German Specific (158 code in 157 / zencartpro adaptations)
+ * @copyright Copyright 2003-2023 Zen Cart Development Team
  * Zen Cart German Version - www.zen-cart-pro.at
  * @copyright Portions Copyright 2003 osCommerce
  * @license https://www.zen-cart-pro.at/license/3_0.txt GNU General Public License V3.0
- * @version $Id: product.php for GMCDE 2022-05-28 17:01:04Z webchills $
+ * @version $Id: product.php for GMCDE 2023-11-03 13:01:04Z webchills $
  */
 
 define('TEXT_PRODUCTS_STATUS', 'Artikelstatus:');
@@ -13,8 +13,6 @@ define('TEXT_PRODUCTS_VIRTUAL', 'Virtueller Artikel:');
 define('TEXT_PRODUCTS_IS_ALWAYS_FREE_SHIPPING', 'Immer versandkostenfrei:');
 define('TEXT_PRODUCTS_QTY_BOX_STATUS', 'Mengeneingabefeld anzeigen:');
 define('TEXT_PRODUCTS_DATE_AVAILABLE', 'Erscheinungsdatum:');
-define('TEXT_PRODUCT_AVAILABLE', 'Aktiviert');
-define('TEXT_PRODUCT_NOT_AVAILABLE', 'Deaktiviert');
 define('TEXT_PRODUCT_IS_VIRTUAL', 'Ja, keine Versandadresse abfragen');
 define('TEXT_PRODUCT_NOT_VIRTUAL', 'Nein, Versandadresse ist notwendig');
 define('TEXT_PRODUCT_IS_ALWAYS_FREE_SHIPPING', 'Ja, immer versandkostenfrei');
@@ -33,7 +31,7 @@ define('TEXT_PRODUCTS_QUANTITY', 'Lagerbestand:');
 
 define('TEXT_PRODUCTS_IMAGE', 'Artikelbild:');
 define('TEXT_EDIT_PRODUCTS_IMAGE', 'Artikelbild bearbeiten:');
-define('TEXT_PRODUCTS_IMAGE_DIR', 'Uploadverzeichnis:');
+
 define('TEXT_PRODUCTS_URL', 'Herstellerlink:');
 define('TEXT_PRODUCTS_URL_WITHOUT_HTTP', '<small>(Ohne führendes http://)</small>');
 define('TEXT_PRODUCTS_PRICE_NET', 'Nettopreis:');
@@ -48,8 +46,6 @@ define('TEXT_PRODUCTS_IS_CALL_PREVIEW', '*Artikel ist als FÜR PREIS ANRUFEN mar
 define('TEXT_PRODUCTS_IS_CALL_EDIT', '*Artikel ist als FÜR PREIS ANRUFEN markiert');
 
 define('TEXT_PRODUCTS_PRICED_BY_ATTRIBUTES', 'Artikelpreis durch Attribute festgelegt:');
-define('TEXT_PRODUCT_IS_PRICED_BY_ATTRIBUTE', 'Ja');
-define('TEXT_PRODUCT_NOT_PRICED_BY_ATTRIBUTE', 'Nein');
 define('TEXT_PRODUCTS_PRICED_BY_ATTRIBUTES_PREVIEW', '*Der angezeigte Preis enthält den niedrigsten Gruppenattributspreis plus dem Grundpreis');
 define('TEXT_PRODUCTS_PRICED_BY_ATTRIBUTES_EDIT', '*Der angezeigte Preis enthält den niedrigsten Gruppenattributspreis plus dem Grundpreis');
 
@@ -72,7 +68,7 @@ define('TEXT_PRODUCT_DATE_ADDED', 'Dieser Artikel wurde am %s hinzugefügt.');
 define('TEXT_PRODUCT_DATE_AVAILABLE', 'Artikel wird ab %s wieder angeboten.');
 
 
-// meta tags
+
 define('TEXT_META_TAG_TITLE_INCLUDES', '<strong>Wählen Sie aus, welche Informationen die Metatags des Artikels enthalten sollen:</strong>');
 define('TEXT_PRODUCTS_METATAGS_PRODUCTS_NAME_STATUS', '<strong>Artikelname:</strong>');
 define('TEXT_PRODUCTS_METATAGS_TITLE_STATUS', '<strong>Titel:</strong>');
@@ -86,7 +82,7 @@ define('TEXT_META_EXCLUDED', '<span class="alert">AUSGESCHLOSSEN</span>');
 define('TEXT_TITLE_PLUS_TAGLINE', 'Store Title+Tagline'); // this refers to whatever rules the storeowner has built into customizing their catalog /includes/modules/meta_tags.php and its lang file.
 
 define('TEXT_PRODUCTS_PRICE_INFO', 'Preis:');
-
+define('WARNING_PRODUCT_DOES_NOT_EXIST' , 'Warnung: Artikel ID#%u kann nicht bearbeitet werden, sie existiert nicht.');
 define('TEXT_ADDITIONAL_FIELDS_MERCHANT_CENTER', 'Zusatzfelder für Google Merchant Center - Verfügbarkeitsdatum nur ausfüllen, wenn Verfügbarkeit vorbestellt oder nachbestellt!');
 define('TEXT_ADDITIONAL_FIELDS_MERCHANT_CENTER_INFO', 'Nur ausfüllen, wenn Sie das Google Merchant Center Modul nutzen');
 define('TEXT_PRODUCTS_TAXONOMY', 'Google Produktkategorie:');
