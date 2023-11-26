@@ -2,18 +2,18 @@
 /**
  * googlemcde.php
  *
- * @package google merchant center deutschland 3.8.0 for Zen-Cart 1.5.7 german
+ * @package google merchant center deutschland 3.9.0 for Zen-Cart 1.5.7 german
  * @copyright Copyright 2007 Numinix Technology http://www.numinix.com
  * @copyright Portions Copyright 2011-2022 webchills http://www.webchills.at
  * @copyright Portions Copyright 2003-2022 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
  * @license https://www.zen-cart-pro.at/license/3_0.txt GNU General Public License V3.0
- * @version $Id: gmcde.php mit Grundpreis 2022-04-30 17:34:54Z webchills $
+ * @version $Id: gmcde.php mit Grundpreis 2023-11-25 11:34:54Z webchills $
  */
  /* configuration */
   ini_set('max_execution_time', 900); // change to whatever time you need
   ini_set('mysql.connect_timeout', 300); // change to whatever time you need
-  ini_set('memory_limit','128M'); // change to whatever you need
+  ini_set('memory_limit','256M'); // change to whatever you need
   set_time_limit(900); // change to whatever time you need
   $keepAlive = 100;  // perform a keep alive every x number of products
   /* end configuration */
@@ -229,7 +229,7 @@
                
                 $product_type = $google_mcde->google_mcde_get_category($products->fields['products_id']);
                 array_pop($product_type); // removes category number from end
-                $product_type = explode(',', $product_type[0]);
+                $product_type = explode(',', $product_type[0] ?? '');               
                 
                                 
                 $content = array();
@@ -271,7 +271,7 @@
                 } else {
                   $product_type = $google_mcde->google_mcde_get_category($products->fields['products_id']);
                   array_pop($product_type); // removes category number from end
-                  $product_type = explode(',', $product_type[0]);
+                  $product_type = explode(',', $product_type[0] ?? ''); 
                 if (GOOGLE_MCDE_PRODUCT_TYPE == 'top') {
                     $top_level = $product_type[0];
                   $content["product_type"] = '<g:product_type>' . $google_mcde->google_mcde_xml_sanitizer($top_level) . '</g:product_type>';
@@ -298,19 +298,19 @@
                 $content["price"] = '<g:price>' . number_format($price, 2, '.', '') . '</g:price>';
                 
                 if ($products->fields['products_model'] != '') {
-                  $content["mpn"] = '<g:mpn>' . $google_mcde->google_mcde_sanita($products->fields['products_model'], true) . '</g:mpn>';
+                  $content["mpn"] = '<g:mpn>' . $products->fields['products_model'] . '</g:mpn>';
                 }
                 if (GOOGLE_MCDE_EAN == 'true' && $products->fields['products_ean'] != '') {
-                $content["ean"] = '<g:ean>' . $google_mcde->google_mcde_sanita($products->fields['products_ean'], true) . '</g:ean>';
+                $content["ean"] = '<g:ean>' . $products->fields['products_ean'] . '</g:ean>';
                 }
                 if (GOOGLE_MCDE_ISBN == 'true' && $products->fields['products_isbn'] != '') {
-                $content["isbn"] = '<g:isbn>' . $google_mcde->google_mcde_sanita($products->fields['products_isbn'], true) . '</g:isbn>';
+                $content["isbn"] = '<g:isbn>' . $products->fields['products_isbn'] . '</g:isbn>';
                 }
                 if (GOOGLE_MCDE_BRAND == 'true' && $products->fields['products_brand'] != '') {
-                $content["brand"] = '<g:brand>' . $google_mcde->google_mcde_sanita($products->fields['products_brand'], true) . '</g:brand>';
+                $content["brand"] = '<g:brand>' . $products->fields['products_brand'] . '</g:brand>';
                 }
                 if (GOOGLE_MCDE_BRAND == 'true' && $products->fields['products_brand'] == '') {
-                $content["brand"] = '<g:brand>' . $google_mcde->google_mcde_sanita($products->fields['manufacturers_name'], true) . '</g:brand>';
+                $content["brand"] = '<g:brand>' . $products->fields['manufacturers_name'] . '</g:brand>';
                 }
                 // identifier_exists as required from july 2013
                 if (GOOGLE_MCDE_EAN == 'true' && $products->fields['products_ean'] == '' && $products->fields['manufacturers_name'] == '') {
