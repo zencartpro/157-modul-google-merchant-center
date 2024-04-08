@@ -2,13 +2,13 @@
 /**
  * googlemcde.php
  *
- * @package google merchant center deutschland 3.7.0 for Zen-Cart 1.5.7 german
+ * @package google merchant center deutschland 3.9.1 for Zen-Cart 1.5.7 german
  * @copyright Copyright 2007 Numinix Technology http://www.numinix.com
  * @copyright Portions Copyright 2011-2022 webchills http://www.webchills.at
  * @copyright Portions Copyright 2003-2022 Zen Cart Development Team
  * @copyright Portions Copyright 2003 osCommerce
  * @license http://www.zen-cart-pro.at/license/2_0.txt GNU Public License V2.0
- * @version $Id: googlemcde.php 2022-02-24 08:21:42Z webchills $
+ * @version $Id: googlemcde.php 2024-04-08 14:21:42Z webchills $
  */
 
   require('includes/application_top.php');
@@ -62,23 +62,10 @@ if(isset($_GET['action']) && $_GET['action'] == 'ftpdir') {
 }
 ?>
 <html <?php echo HTML_PARAMS; ?>>
-  <head>
-    <meta charset="<?php echo CHARSET; ?>">
-    <title><?php echo TITLE; ?></title>
-    <link rel="stylesheet" href="includes/stylesheet.css">
-    <link rel="stylesheet" href="includes/cssjsmenuhover.css" media="all" id="hoverJS">
-    <script src="includes/menu.js"></script>
-    <script src="includes/general.js"></script>
+<head>
+    <?php require DIR_WS_INCLUDES . 'admin_html_head.php'; ?>
+    <link rel="stylesheet" href="includes/css/admin_access.css">
 
-    <script>
-      function init() {
-          cssjsmenu('navbar');
-          if (document.getElementById) {
-              var kill = document.getElementById('hoverJS');
-              kill.disabled = true;
-          }
-      }
-    </script>
     <script language="javascript"><!--
 function getObject(name) {
    var ns4 = (document.layers) ? true : false;
@@ -141,7 +128,7 @@ function processLoading(text) {
   #columnRight{float:left;margin-left:-350px;width:350px;}
 </style>
 </head>
-<body onLoad="init()" >
+<body>
       <!-- header //-->
       <?php require(DIR_WS_INCLUDES . 'header.php'); ?>
       <!-- header_eof //-->

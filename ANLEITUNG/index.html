@@ -1,7 +1,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
 <head>
-<title>Google Merchant Center Deutschland 3.9.0 für Zen Cart 1.5.7g deutsch</title>
+<title>Google Merchant Center Deutschland 3.9.1 für Zen Cart 1.5.7g deutsch</title>
 <meta http-equiv="pragma" content="no-cache">
 <meta http-equiv="content-type" content="text/html; charset=utf-8">
 <meta http-equiv="content-language" content="de">
@@ -12,7 +12,7 @@
 <body>
 <div id="wrapper">
 <div id="header">
-<h1>Google Merchant Center 3.9.0 für Zen Cart 1.5.7g deutsch</h1>
+<h1>Google Merchant Center 3.9.1 für Zen Cart 1.5.7g deutsch</h1>
 </div>
 
 <div id="slidetabsmenu" style="display: none;">
@@ -61,13 +61,19 @@ Ab Ende Juni 2022 ist es nötig bei Verfügbarkeit preorder oder backorder ein V
   </p>
 <h3>Copyright,  Lizenz, Changelog</h3>
 <p>Copyright dieser deutschen Anpassung/Anleitung für Zen Cart 1.5.7 deutsch<br>
-(c) 2016-2023 webchills (<a href="http://www.webchills.at" target="_blank">www.webchills.at</a>) <br>
+(c) 2016-2024 webchills (<a href="http://www.webchills.at" target="_blank">www.webchills.at</a>) <br>
 <br>
 deutsche Übersetzung/Anpassung des Moduls Google Merchant Center von Numinix<br>
 <a href="http://www.zen-cart.com/downloads.php?do=file&id=1375">http://www.zen-cart.com/downloads.php?do=file&amp;id=1375</a></p>
 <p>  @copyright Copyright 2007 Numinix Technology <br>
   <a href="http://www.numinix.com" target="_blank">http://www.numinix.com</a></p>
-<p>Version 3.9.0<br>
+<p>  Version 3.9.1<br>
+2024-04-08<br>
+* Anpassungen für Zen Cart 1.5.7h<br>
+* Anleitung mit Hinweis auf veraltete FTP-Upload Funktionalität aktualisiert
+<br>
+<br>
+  Version 3.9.0<br>
 2023-11-03<br>
 * Anpassungen für Zen Cart 1.5.7g
   <br>
@@ -122,9 +128,9 @@ Version 3.8.0<br>
 <h2>Installation</h2>
 <h3>Voraussetzungen</h3>
   <br>
-  Dieses Modul ist<strong> nur für die deutsche Zen Cart Version 1.5.7g geeignet</strong></p>.<br>
-  <strong>Stellen Sie sicher, dass Sie Ihre Zen Cart Version bereits auf 1.5.7g aktualisiert haben, bevor Sie auf Version 3.9.0 aktualisieren.<br>
-  Die mitgelieferten geänderten Dateien dieses Moduls sind auf dem Stand von 1.5.7g!
+  Dieses Modul ist<strong> nur für die deutsche Zen Cart Version 1.5.7h geeignet</strong></p>.<br>
+  <strong>Stellen Sie sicher, dass Sie Ihre Zen Cart Version bereits auf 1.5.7h aktualisiert haben, bevor Sie auf Version 3.9.1 aktualisieren.<br>
+  Die mitgelieferten geänderten Dateien dieses Moduls sind auf dem Stand von 1.5.7h!
   </strong><br>
 <br>
 <p><b>WICHTIG</b><br/>
@@ -158,8 +164,8 @@ BACKUP gemacht? Ok, dann weiterlesen...
   Im Ordner GEAENDERTE DATEIEN alle Ordner namens DEINTEMPLATE auf das   im Shop verwendete Template umbennen.   <br>
   Falls Sie das 1.5.7 Standardtemplate responsive_classic verwenden, verwenden Sie die Dateien im Ordner DEINTEMPLATE_RESPONSIVE und benennen den auf responsive_classic um.<br>
   Den Ordner DEINADMIN auf den Namen Ihres admin Verzeichnisses   umbenennen.<br>
-Wenn Sie Zen Cart 1.5.7g gerade frisch installiert haben und noch   keinerlei Änderungen an den Dateien vorgenommen haben, können Sie nun  alle Dateien/Ordner aus dem Ordner GEAENDERTE DATEIEN in der   vorgegebenen Struktur in die Zen Cart Installation hochladen. Dabei   werden dann etliche Dateien überschrieben.<br>
-Wenn Sie Zen Cart 1.5.7g schon länger im Einsatz haben und schon einmal   Änderungen an Dateien vorgenommen oder andere Module eingebaut haben,   dann laden Sie die Dateien keinesfalls einfach hoch. <br>
+Wenn Sie Zen Cart 1.5.7h gerade frisch installiert haben und noch   keinerlei Änderungen an den Dateien vorgenommen haben, können Sie nun  alle Dateien/Ordner aus dem Ordner GEAENDERTE DATEIEN in der   vorgegebenen Struktur in die Zen Cart Installation hochladen. Dabei   werden dann etliche Dateien überschrieben.<br>
+Wenn Sie Zen Cart 1.5.7h schon länger im Einsatz haben und schon einmal   Änderungen an Dateien vorgenommen oder andere Module eingebaut haben,   dann laden Sie die Dateien keinesfalls einfach hoch. <br>
 Vergleichen Sie alle Dateien im Ordner GEAENDERTE DATEIEN mit den   entsprechenden Dateien in Ihrem Shop und nehmen Sie die Änderungen   manuell per WinMerge oder BeyondCompare vor.<br>
 Dann spielen Sie die geänderten Dateien in der gezeigten Struktur ein.<br>
 <br>
@@ -266,38 +272,37 @@ Im Ordner UNINSTALL stehen zwei Dateien zur Verfügung. Eine zur Deinstallation 
 leer und klicken Sie einfach auf den Button &quot;bestätigen&quot;.<br />
 Es öffnet sich ein Popup, das nach kurzer Zeit die Erzeugung des Feeds bestätigt. Danach können Sie die XML Datei unter Verfügbare Produktfeeds zur Kontrolle herunterladen.<br />
 <br />
-Wenn Sie den FTP Upload nutzen wollen clicken Sie unter &quot;Aktion&quot; auf &quot;FTP-Upload&quot;. Voraussetzung: Sie haben zuvor in Ihrem Google Merchant Center einen FTP Account angelegt und Benutzernamen und Passwort in der Zen Cart Administration des Moduls eingetragen. Bitte beachten Sie, dass es mehrere Stunden dauern kann, bis ein neu angelegter FTP Account seitens Google aktiv ist. Wenn Sie den Account also gerade erst angelegt haben, dann wird der Upload fehlschlagen.</p>
+<strong>Hinweis zur Funktion FTP-Upload</strong><br>
+<strong>Diese Funktion ist veraltet und wird in zukünftigen Versionen dieses Moduls entfernt.<br>
+Nutzen Sie NICHT den FTP-Upload auf Google Server!<br>
+Lassen Sie Ihr Artikelfeed einfach von Google regelmäßig abholen!
+</strong></p>
 
-<p>Wenn Sie den FTP-Upload nicht nutzen wollen, können Sie in Ihrem Google Merchant Center einen Zeitplan einstellen, an dem sich Google das Produktfeed automatisiert selbst holt.<br />
+<p>Stellen Sie in Ihrem Google Merchant Center einen Zeitplan ein, an dem sich Google das Produktfeed automatisiert selbst holt.<br />
   Ihr Artikelfeed befindet sich standardmäßig im Ordner feed/googlemcde<br />
 Wenn Ihre Feeddatei meinshop_products.xml heißt, dann müssten Sie also beim Zeitplan folgenden Link eintragen:<br />
 http://www.meinshop.de/feed/googlemcde/meinshop_products.xml</p>
-<p>Lassen Sie nun Google Ihr neu erstelltes Artikelfeed zukommen (egal ob per FTP oder automatisierten Zeitplan) und überprüfen Sie danach das Feed in Ihrem Google Merchant Center. </p>
+<p>Lassen Sie nun Google Ihr neu erstelltes Artikelfeed zukommen  und überprüfen Sie danach das Feed in Ihrem Google Merchant Center. </p>
 <p><strong>Artikelfeed automatisiert per Cronjob aktualisieren:</strong><br />
   <br />
   Legen Sie einen Cronjob an, der einmal pro Woche (oder wann immer Sie wollen) folgende Adresse aufruft:<br />
 
   <br />
-  googlemcde.php?feed=fy_un_tp&amp;key=xxxxxxxxx<br>
+  <strong>googlemcde.php?feed=fy_un_tp&amp;key=xxxxxxxxx</strong><br>
   <br>
   Ersetzen Sie die xxx bei key mit dem unter Konfiguration hinterlegten Sicherheitsschlüssel
 <br />
   <br />
   Dadurch passiert genau dasselbe wie wenn Sie das manuell unter Tools &gt; Google Merchant Center Deutschland in der Zen Cart Administration machen würden.<br />
   Mit diesem Kommando wird nur das Feed aktualisiert, es erfolgt kein FTP-Upload <br />
-  Wenn Sie das Feed per Zeitplan von Google abholen lassen, ist das ausreichend.<br />
-
-  <br />
-  Wenn Sie den Zeitplan nicht verwenden und das Feed immer per FTP hochladen, dann verwenden Sie folgenden Link in Ihrem Cronjob:<br />
-  <br />
-  googlemcde.php.php?feed=fy_uy_tp&amp;key=xxxxxxxxx<br>
+  Wenn Sie das Feed per Zeitplan von Google abholen lassen, ist das ausreichend.
+  <br>
   <br>
   Bedeutung der Werte:
 </p>
 <p>fy = feed yes = muss immer so stehen bleiben<br>
-  uy = upload yes = dann müssen die richtigen FTP Daten hinterlegt sein und das Feed wird nach der Erzeugung automatisch per FTP an Google übertragen<br>
   un = upload no
-  = es wird nur das Feed erzeugt, kein automatische FTP-Upload = sinnvoll, wenn im Merchant Center die URL für das automatisierte Einlesen nach Zeitplan eingestellt ist<br>
+  = es wird nur das Feed erzeugt, kein automatischer FTP-Upload = sinnvoll, wenn im Merchant Center die URL für das automatisierte Einlesen nach Zeitplan eingestellt ist<br>
   tp = type product = muss immer so stehen bleiben
   <br />
 </p>
